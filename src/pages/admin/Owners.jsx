@@ -117,7 +117,7 @@ export default function Owners() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-vetivet-green"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-vetivet-red"></div>
       </div>
     )
   }
@@ -175,8 +175,8 @@ export default function Owners() {
                   <tr key={owner.id} className="hover:bg-gray-50">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-vetivet-green-light rounded-full flex items-center justify-center">
-                          <User className="w-5 h-5 text-vetivet-green" />
+                        <div className="w-10 h-10 bg-vetivet-blue-light rounded-full flex items-center justify-center">
+                          <User className="w-5 h-5 text-vetivet-blue" />
                         </div>
                         <div>
                           <p className="font-medium text-gray-800">

@@ -155,7 +155,7 @@ export default function Patients() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-vetivet-green"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-vetivet-red"></div>
       </div>
     )
   }
@@ -214,7 +214,7 @@ export default function Patients() {
                   <tr key={patient.id} className="hover:bg-gray-50">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-vetivet-green-light rounded-full flex items-center justify-center text-lg">
+                        <div className="w-10 h-10 bg-vetivet-blue-light rounded-full flex items-center justify-center text-lg">
                           {getSpeciesIcon(patient.species)}
                         </div>
                         <div>

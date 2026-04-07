@@ -112,7 +112,7 @@ export default function Dashboard() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-vetivet-green"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-vetivet-red"></div>
       </div>
     )
   }
@@ -151,7 +151,7 @@ export default function Dashboard() {
           <h2 className="text-lg font-semibold text-gray-800">Citas Recientes</h2>
           <Link 
             to="/admin/appointments"
-            className="text-vetivet-green hover:text-vetivet-green/80 text-sm font-medium"
+            className="text-vetivet-red hover:text-vetivet-red/80 text-sm font-medium"
           >
             Ver todas →
           </Link>

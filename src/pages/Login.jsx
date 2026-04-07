@@ -43,7 +43,7 @@ export default function Login() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Navbar */}
-      <nav className="bg-vetivet-teal py-3">
+      <nav className="bg-vetivet-blue py-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           <div className="flex items-center gap-6">
             <Link to="/" className="text-white hover:text-white/80 transition-colors">
@@ -55,7 +55,7 @@ export default function Login() {
           </div>
           
           <div className="flex items-center gap-4">
-            <button className="btn bg-vetivet-orange text-white hover:bg-orange-600 text-sm px-4 py-2">
+            <button className="btn bg-vetivet-red text-white hover:bg-vetivet-red-hover text-sm px-4 py-2">
               <Calendar className="w-4 h-4" />
               Agendar una cita
             </button>
@@ -125,7 +125,7 @@ export default function Login() {
                   name="remember"
                   checked={formData.remember}
                   onChange={handleChange}
-                  className="w-4 h-4 text-vetivet-green border-gray-300 rounded focus:ring-vetivet-green"
+                  className="w-4 h-4 text-vetivet-blue border-gray-300 rounded focus:ring-vetivet-blue"
                 />
                 <label htmlFor="remember" className="ml-2 text-sm text-gray-600">
                   Recordar
@@ -150,7 +150,7 @@ export default function Login() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-vetivet-teal py-4">
+      <footer className="bg-vetivet-blue py-4">
         <div className="max-w-7xl mx-auto px-4 text-center text-white text-sm">
           © Copyright 2019 - {new Date().getFullYear()} | Desarrollado por <span className="font-bold">BUILD</span>
         </div>

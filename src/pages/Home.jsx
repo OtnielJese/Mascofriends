@@ -95,7 +95,7 @@ export default function Home() {
                 <p className="text-gray-600 mb-4">
                   {service.description}
                 </p>
-                <div className="flex items-center text-vetivet-green font-medium">
+                <div className="flex items-center text-vetivet-red font-medium">
                   Ver más <ChevronRight className="w-4 h-4 ml-1" />
                 </div>
               </div>
@@ -118,7 +118,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <WhatsAppButton 
                 type="consultation"
-                className="btn bg-white text-vetivet-green hover:bg-gray-100"
+                className="btn bg-white text-vetivet-blue hover:bg-gray-100"
               >
                 <Calendar className="w-5 h-5" />
                 Agendar Consulta
@@ -149,8 +149,8 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <div key={index} className="text-center">
-                <div className="w-20 h-20 bg-vetivet-green-light rounded-full flex items-center justify-center mx-auto mb-6">
-                  <feature.icon className="w-10 h-10 text-vetivet-green" />
+                <div className="w-20 h-20 bg-vetivet-blue-light rounded-full flex items-center justify-center mx-auto mb-6">
+                  <feature.icon className="w-10 h-10 text-vetivet-blue" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">
                   {feature.title}
@@ -176,8 +176,8 @@ export default function Home() {
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-vetivet-green-light rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-vetivet-green" />
+                  <div className="w-12 h-12 bg-vetivet-blue-light rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-6 h-6 text-vetivet-blue" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800">Teléfono</h4>
@@ -186,8 +186,8 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-vetivet-green-light rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-vetivet-green" />
+                  <div className="w-12 h-12 bg-vetivet-blue-light rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-6 h-6 text-vetivet-blue" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800">Email</h4>
@@ -196,8 +196,8 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-vetivet-green-light rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-vetivet-green" />
+                  <div className="w-12 h-12 bg-vetivet-blue-light rounded-lg flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-vetivet-blue" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800">Dirección</h4>
@@ -206,8 +206,8 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-vetivet-green-light rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-6 h-6 text-vetivet-green" />
+                  <div className="w-12 h-12 bg-vetivet-blue-light rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-6 h-6 text-vetivet-blue" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800">Horario</h4>
@@ -261,7 +261,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-vetivet-navy text-white py-12">
+      <footer className="bg-vetivet-dark text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2">
@@ -271,25 +271,25 @@ export default function Home() {
                 className="h-12 w-auto mb-4"
               />
               <p className="text-gray-400 mb-4">
-                Tu clínica veterinaria de confianza. Nos dedicamos a garantizar el bienestar 
-                y la salud de tu mascota con la más alta calidad en cada tratamiento.
+                Tu pet shop y spa de confianza. Nos dedicamos a garantizar el bienestar 
+                y tranquilidad de tu mascota, dejándolo con el estilo que tú desees.
               </p>
             </div>
             
             <div>
               <h4 className="font-semibold text-lg mb-4">Enlaces</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#servicios" className="hover:text-vetivet-teal transition-colors">Servicios</a></li>
-                <li><a href="#citas" className="hover:text-vetivet-teal transition-colors">Citas</a></li>
-                <li><a href="#contacto" className="hover:text-vetivet-teal transition-colors">Contacto</a></li>
-                <li><Link to="/login" className="hover:text-vetivet-teal transition-colors">Inicia sesión</Link></li>
+                <li><a href="#servicios" className="hover:text-vetivet-blue transition-colors">Servicios</a></li>
+                <li><a href="#citas" className="hover:text-vetivet-blue transition-colors">Citas</a></li>
+                <li><a href="#contacto" className="hover:text-vetivet-blue transition-colors">Contacto</a></li>
+                <li><Link to="/login" className="hover:text-vetivet-blue transition-colors">Inicia sesión</Link></li>
               </ul>
             </div>
 
             <div>
               <h4 className="font-semibold text-lg mb-4">Síguenos</h4>
               <div className="flex gap-4">
-                <a href="#" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-vetivet-teal transition-colors">
+                <a href="#" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-vetivet-blue transition-colors">
                   <MessageCircle className="w-5 h-5" />
                 </a>
               </div>

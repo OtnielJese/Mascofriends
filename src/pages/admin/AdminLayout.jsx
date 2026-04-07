@@ -33,10 +33,14 @@ export default function AdminLayout() {
   return (
     <div className="min-h-screen bg-gray-100 flex">
       {/* Sidebar - Desktop */}
-      <aside className="hidden lg:flex lg:flex-col w-64 bg-vetivet-navy text-white">
+      <aside className="hidden lg:flex lg:flex-col w-64 bg-vetivet-dark text-white">
         {/* Logo */}
         <div className="p-6 border-b border-white/10">
-          <h1 className="text-2xl font-display font-bold text-vetivet-teal">Vetivet</h1>
+          <img 
+            src="/images/mascofriends-logo.png" 
+            alt="Masco Friends" 
+            className="h-10 w-auto mb-2"
+          />
           <p className="text-sm text-gray-400">Panel de Administración</p>
         </div>
 
@@ -50,7 +54,7 @@ export default function AdminLayout() {
               className={({ isActive }) =>
                 `flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
                   isActive
-                    ? 'bg-vetivet-green text-white'
+                    ? 'bg-vetivet-red text-white'
                     : 'text-gray-300 hover:bg-white/10 hover:text-white'
                 }`
               }
@@ -87,12 +91,16 @@ export default function AdminLayout() {
 
       {/* Sidebar - Mobile */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 w-64 bg-vetivet-navy text-white transform transition-transform lg:hidden ${
+        className={`fixed inset-y-0 left-0 z-50 w-64 bg-vetivet-dark text-white transform transition-transform lg:hidden ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         <div className="p-4 flex justify-between items-center border-b border-white/10">
-          <h1 className="text-xl font-display font-bold text-vetivet-teal">Vetivet</h1>
+          <img 
+            src="/images/mascofriends-logo.png" 
+            alt="Masco Friends" 
+            className="h-8 w-auto"
+          />
           <button onClick={() => setSidebarOpen(false)}>
             <X className="w-6 h-6" />
           </button>
@@ -107,7 +115,7 @@ export default function AdminLayout() {
               className={({ isActive }) =>
                 `flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
                   isActive
-                    ? 'bg-vetivet-green text-white'
+                    ? 'bg-vetivet-red text-white'
                     : 'text-gray-300 hover:bg-white/10 hover:text-white'
                 }`
               }
@@ -151,7 +159,7 @@ export default function AdminLayout() {
 
             <NavLink 
               to="/"
-              className="text-vetivet-green hover:text-vetivet-green/80 text-sm font-medium"
+              className="text-vetivet-red hover:text-vetivet-red/80 text-sm font-medium"
             >
               ← Volver al sitio
             </NavLink>
