@@ -20,6 +20,25 @@ export default function Appointments() {
     notes: ''
   })
 
+  // Quick create modals
+  const [ownerModalOpen, setOwnerModalOpen] = useState(false)
+  const [patientModalOpen, setPatientModalOpen] = useState(false)
+  const [quickOwnerData, setQuickOwnerData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    address: ''
+  })
+  const [quickPatientData, setQuickPatientData] = useState({
+    name: '',
+    species: 'DOG',
+    breed: '',
+    birthDate: '',
+    weight: '',
+    color: ''
+  })
+
   useEffect(() => {
     loadData()
   }, [])
@@ -145,6 +164,57 @@ export default function Appointments() {
     }
   }
 
+  // Quick create functions
+  const handleQuickCreateOwner = async (e) => {
+    e.preventDefault()
+    try {
+      const newOwner = await OwnerService.create(quickOwnerData)
+      toast.success('Dueño creado correctamente')
+      setOwners([...owners, newOwner])
+      setFormData(prev => ({ ...prev, ownerId: newOwner.id.toString() }))
+      setOwnerModalOpen(false)
+      setQuickOwnerData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        address: ''
+      })
+    } catch (error) {
+      toast.error(error.response?.data?.message || 'Error al crear dueño')
+    }
+  }
+
+  const handleQuickCreatePatient = async (e) => {
+    e.preventDefault()
+    if (!formData.ownerId) {
+      toast.error('Primero selecciona un dueño')
+      return
+    }
+    try {
+      const payload = {
+        ...quickPatientData,
+        ownerId: parseInt(formData.ownerId),
+        weight: quickPatientData.weight ? parseFloat(quickPatientData.weight) : null
+      }
+      const newPatient = await PatientService.create(payload)
+      toast.success('Mascota creada correctamente')
+      setPatients([...patients, newPatient])
+      setFormData(prev => ({ ...prev, patientId: newPatient.id.toString() }))
+      setPatientModalOpen(false)
+      setQuickPatientData({
+        name: '',
+        species: 'DOG',
+        breed: '',
+        birthDate: '',
+        weight: '',
+        color: ''
+      })
+    } catch (error) {
+      toast.error(error.response?.data?.message || 'Error al crear mascota')
+    }
+  }
+
   const getStatusBadge = (status) => {
     const styles = {
       PENDING: 'bg-yellow-100 text-yellow-800',
@@ -179,7 +249,7 @@ export default function Appointments() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-vetivet-green"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-vetivet-red"></div>
       </div>
     )
   }
@@ -206,7 +276,7 @@ export default function Appointments() {
               onClick={() => setFilterStatus(status)}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                 filterStatus === status
-                  ? 'bg-vetivet-green text-white'
+                  ? 'bg-vetivet-red text-white'
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
             >
@@ -324,43 +394,64 @@ export default function Appointments() {
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Dueño *
                 </label>
-                <select
-                  name="ownerId"
-                  value={formData.ownerId}
-                  onChange={handleOwnerChange}
-                  className="input"
-                  required
-                >
-                  <option value="">Seleccionar dueño</option>
-                  {owners.map((owner) => (
-                    <option key={owner.id} value={owner.id}>
-                      {owner.firstName} {owner.lastName}
-                    </option>
-                  ))}
-                </select>
+                <div className="flex gap-2">
+                  <select
+                    name="ownerId"
+                    value={formData.ownerId}
+                    onChange={handleOwnerChange}
+                    className="input flex-1"
+                    required
+                  >
+                    <option value="">Seleccionar dueño</option>
+                    {owners.map((owner) => (
+                      <option key={owner.id} value={owner.id}>
+                        {owner.firstName} {owner.lastName}
+                      </option>
+                    ))}
+                  </select>
+                  <button
+                    type="button"
+                    onClick={() => setOwnerModalOpen(true)}
+                    className="px-4 py-2 bg-vetivet-blue text-white rounded-lg hover:bg-vetivet-blue-hover flex items-center gap-1"
+                    title="Crear nuevo dueño"
+                  >
+                    <Plus className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Mascota *
                 </label>
-                <select
-                  name="patientId"
-                  value={formData.patientId}
-                  onChange={handleChange}
-                  className="input"
-                  required
-                  disabled={!formData.ownerId}
-                >
-                  <option value="">
-                    {formData.ownerId ? 'Seleccionar mascota' : 'Primero seleccione un dueño'}
-                  </option>
-                  {getOwnerPatients().map((patient) => (
-                    <option key={patient.id} value={patient.id}>
-                      {patient.name} ({patient.species})
+                <div className="flex gap-2">
+                  <select
+                    name="patientId"
+                    value={formData.patientId}
+                    onChange={handleChange}
+                    className="input flex-1"
+                    required
+                    disabled={!formData.ownerId}
+                  >
+                    <option value="">
+                      {formData.ownerId ? 'Seleccionar mascota' : 'Primero seleccione un dueño'}
                     </option>
-                  ))}
-                </select>
+                    {getOwnerPatients().map((patient) => (
+                      <option key={patient.id} value={patient.id}>
+                        {patient.name} ({patient.species})
+                      </option>
+                    ))}
+                  </select>
+                  <button
+                    type="button"
+                    onClick={() => setPatientModalOpen(true)}
+                    disabled={!formData.ownerId}
+                    className="px-4 py-2 bg-vetivet-blue text-white rounded-lg hover:bg-vetivet-blue-hover flex items-center gap-1 disabled:opacity-50 disabled:cursor-not-allowed"
+                    title="Crear nueva mascota"
+                  >
+                    <Plus className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
 
               <div>
@@ -435,6 +526,203 @@ export default function Appointments() {
                 </button>
                 <button type="submit" className="btn btn-primary flex-1">
                   {editingAppointment ? 'Actualizar' : 'Crear'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Quick Create Owner Modal */}
+      {ownerModalOpen && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[60] p-4">
+          <div className="bg-white rounded-2xl w-full max-w-md">
+            <div className="flex items-center justify-between p-6 border-b">
+              <h2 className="text-xl font-semibold text-gray-800">Crear Dueño</h2>
+              <button onClick={() => setOwnerModalOpen(false)} className="p-2 hover:bg-gray-100 rounded-lg">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            
+            <form onSubmit={handleQuickCreateOwner} className="p-6 space-y-4">
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Nombre *
+                  </label>
+                  <input
+                    type="text"
+                    value={quickOwnerData.firstName}
+                    onChange={(e) => setQuickOwnerData({...quickOwnerData, firstName: e.target.value})}
+                    className="input"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Apellido *
+                  </label>
+                  <input
+                    type="text"
+                    value={quickOwnerData.lastName}
+                    onChange={(e) => setQuickOwnerData({...quickOwnerData, lastName: e.target.value})}
+                    className="input"
+                    required
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Teléfono *
+                </label>
+                <input
+                  type="tel"
+                  value={quickOwnerData.phone}
+                  onChange={(e) => setQuickOwnerData({...quickOwnerData, phone: e.target.value})}
+                  className="input"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  value={quickOwnerData.email}
+                  onChange={(e) => setQuickOwnerData({...quickOwnerData, email: e.target.value})}
+                  className="input"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Dirección
+                </label>
+                <input
+                  type="text"
+                  value={quickOwnerData.address}
+                  onChange={(e) => setQuickOwnerData({...quickOwnerData, address: e.target.value})}
+                  className="input"
+                />
+              </div>
+
+              <div className="flex gap-3 pt-4">
+                <button type="button" onClick={() => setOwnerModalOpen(false)} className="btn btn-secondary flex-1">
+                  Cancelar
+                </button>
+                <button type="submit" className="btn btn-primary flex-1">
+                  Crear Dueño
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Quick Create Patient Modal */}
+      {patientModalOpen && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[60] p-4">
+          <div className="bg-white rounded-2xl w-full max-w-md max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between p-6 border-b">
+              <h2 className="text-xl font-semibold text-gray-800">Crear Mascota</h2>
+              <button onClick={() => setPatientModalOpen(false)} className="p-2 hover:bg-gray-100 rounded-lg">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            
+            <form onSubmit={handleQuickCreatePatient} className="p-6 space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Nombre de la Mascota *
+                </label>
+                <input
+                  type="text"
+                  value={quickPatientData.name}
+                  onChange={(e) => setQuickPatientData({...quickPatientData, name: e.target.value})}
+                  className="input"
+                  required
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Especie *
+                  </label>
+                  <select
+                    value={quickPatientData.species}
+                    onChange={(e) => setQuickPatientData({...quickPatientData, species: e.target.value})}
+                    className="input"
+                    required
+                  >
+                    <option value="DOG">Perro</option>
+                    <option value="CAT">Gato</option>
+                    <option value="BIRD">Ave</option>
+                    <option value="RABBIT">Conejo</option>
+                    <option value="HAMSTER">Hámster</option>
+                    <option value="OTHER">Otro</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Raza
+                  </label>
+                  <input
+                    type="text"
+                    value={quickPatientData.breed}
+                    onChange={(e) => setQuickPatientData({...quickPatientData, breed: e.target.value})}
+                    className="input"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Fecha de Nacimiento
+                  </label>
+                  <input
+                    type="date"
+                    value={quickPatientData.birthDate}
+                    onChange={(e) => setQuickPatientData({...quickPatientData, birthDate: e.target.value})}
+                    className="input"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Peso (kg)
+                  </label>
+                  <input
+                    type="number"
+                    step="0.1"
+                    value={quickPatientData.weight}
+                    onChange={(e) => setQuickPatientData({...quickPatientData, weight: e.target.value})}
+                    className="input"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Color
+                </label>
+                <input
+                  type="text"
+                  value={quickPatientData.color}
+                  onChange={(e) => setQuickPatientData({...quickPatientData, color: e.target.value})}
+                  className="input"
+                />
+              </div>
+
+              <div className="flex gap-3 pt-4">
+                <button type="button" onClick={() => setPatientModalOpen(false)} className="btn btn-secondary flex-1">
+                  Cancelar
+                </button>
+                <button type="submit" className="btn btn-primary flex-1">
+                  Crear Mascota
                 </button>
               </div>
             </form>

@@ -19,11 +19,11 @@
   }
   
   .btn-primary {
-    @apply bg-vetivet-orange text-white hover:bg-orange-600 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+    @apply bg-vetivet-red text-white hover:bg-vetivet-red-hover shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
   }
   
   .btn-secondary {
-    @apply bg-white text-vetivet-green border-2 border-vetivet-green hover:bg-vetivet-green hover:text-white;
+    @apply bg-white text-vetivet-blue border-2 border-vetivet-blue hover:bg-vetivet-blue hover:text-white;
   }
   
   .btn-whatsapp {
@@ -35,7 +35,7 @@
   }
   
   .input {
-    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-vetivet-green focus:border-transparent outline-none transition-all duration-200;
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-vetivet-blue focus:border-transparent outline-none transition-all duration-200;
   }
   
   .input-icon {
@@ -43,11 +43,11 @@
   }
   
   .nav-link {
-    @apply text-gray-600 hover:text-vetivet-green font-medium transition-colors duration-200;
+    @apply text-gray-600 hover:text-vetivet-blue font-medium transition-colors duration-200;
   }
   
   .section-title {
-    @apply text-3xl md:text-4xl font-display font-bold text-vetivet-navy mb-4;
+    @apply text-3xl md:text-4xl font-display font-bold text-vetivet-dark mb-4;
   }
   
   .section-subtitle {
@@ -67,11 +67,11 @@
 
 /* Gradient backgrounds */
 .gradient-hero {
-  background: linear-gradient(135deg, #e8f5f0 0%, #f0fdf4 50%, #dcfce7 100%);
+  background: linear-gradient(135deg, #E6F1FF 0%, #FFE8E9 50%, #F0F9FF 100%);
 }
 
 .gradient-cta {
-  background: linear-gradient(135deg, #2D8B6F 0%, #3CB4A4 100%);
+  background: linear-gradient(135deg, #005CAB 0%, #E31E24 100%);
 }
 
 /* Scrollbar styling */
@@ -84,10 +84,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2D8B6F;
+  background: #005CAB;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #1e6b55;
+  background: #004788;
 }

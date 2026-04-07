@@ -70,7 +70,7 @@ export default function Navbar() {
                       <a
                         key={subIndex}
                         href={subItem.href}
-                        className="block px-4 py-2 text-gray-600 hover:bg-vetivet-green-light hover:text-vetivet-green transition-colors"
+                        className="block px-4 py-2 text-gray-600 hover:bg-vetivet-blue-light hover:text-vetivet-blue transition-colors"
                       >
                         {subItem.label}
                       </a>
@@ -117,7 +117,7 @@ export default function Navbar() {
               <a
                 key={index}
                 href={item.href}
-                className="block py-3 px-4 text-gray-600 hover:bg-vetivet-green-light hover:text-vetivet-green rounded-lg"
+                className="block py-3 px-4 text-gray-600 hover:bg-vetivet-blue-light hover:text-vetivet-blue rounded-lg"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}

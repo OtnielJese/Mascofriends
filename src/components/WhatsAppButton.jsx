@@ -47,10 +47,14 @@ export default function WhatsAppButton({
       <button
         onClick={handleClick}
         disabled={loading}
-        className={`w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group hover:scale-110 ${className}`}
+        className={`w-20 h-20 bg-transparent rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group hover:scale-110 ${className}`}
         aria-label="Contactar por WhatsApp"
       >
-        <MessageCircle className="w-7 h-7 group-hover:scale-110 transition-transform" />
+        <img 
+          src="/images/Whatsapp_V1.png" 
+          alt="WhatsApp" 
+          className="w-full h-full group-hover:scale-110 transition-transform object-contain"
+        />
       </button>
     )
   }

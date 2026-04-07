@@ -44,11 +44,20 @@ export default {
           900: '#0c4a6e',
         },
         vetivet: {
-          green: '#2D8B6F',
-          'green-light': '#E8F5F0',
-          orange: '#FF6B35',
-          teal: '#3CB4A4',
-          navy: '#1E3A5F',
+          red: '#E31E24',           // Rojo principal del logo MASCO
+          'red-light': '#FFE8E9',   // Rojo claro para fondos
+          'red-hover': '#C11A1F',   // Rojo oscuro para hover
+          blue: '#005CAB',          // Azul principal del logo FRIENDS
+          'blue-light': '#E6F1FF',  // Azul claro para fondos
+          'blue-hover': '#004788',  // Azul oscuro para hover
+          dark: '#1a1a1a',          // Negro para textos
+          gray: '#6B7280',          // Gris para textos secundarios
+          // Alias para mantener compatibilidad temporal
+          green: '#E31E24',
+          'green-light': '#FFE8E9',
+          orange: '#E31E24',
+          teal: '#005CAB',
+          navy: '#1a1a1a',
         }
       },
       fontFamily: {
