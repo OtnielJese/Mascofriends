@@ -164,6 +164,58 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Blog Section */}
+      <section id="blog" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="section-title">Blog de Mascotas</h2>
+            <p className="section-subtitle">
+              Consejos y artículos útiles para el cuidado de tu mascota.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: '10 Tips para cuidar a tu perro en invierno',
+                description: 'Descubre cómo proteger a tu mejor amigo durante los meses fríos con estos consejos prácticos.',
+                date: '15 de Marzo, 2026',
+                category: 'Cuidados'
+              },
+              {
+                title: 'Nutrición felina: la dieta perfecta para tu gato',
+                description: 'Aprende sobre los nutrientes esenciales que tu gato necesita para una vida saludable.',
+                date: '10 de Marzo, 2026',
+                category: 'Nutrición'
+              },
+              {
+                title: 'Importancia de las vacunas en mascotas',
+                description: 'Conoce por qué es fundamental mantener al día el esquema de vacunación de tu mascota.',
+                date: '5 de Marzo, 2026',
+                category: 'Salud'
+              },
+            ].map((post, index) => (
+              <div key={index} className="card bg-white hover:-translate-y-2 cursor-pointer group">
+                <div className="h-40 bg-gradient-to-br from-vetivet-blue to-vetivet-blue-light rounded-lg mb-4 group-hover:scale-105 transition-transform"></div>
+                <span className="inline-block px-3 py-1 bg-vetivet-blue-light text-vetivet-blue text-sm rounded-full font-medium mb-3">
+                  {post.category}
+                </span>
+                <h3 className="text-xl font-semibold text-gray-800 mb-2 line-clamp-2">
+                  {post.title}
+                </h3>
+                <p className="text-gray-600 mb-4 line-clamp-2">
+                  {post.description}
+                </p>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-500">{post.date}</span>
+                  <ChevronRight className="w-4 h-4 text-vetivet-red group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section id="contacto" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
