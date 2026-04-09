@@ -36,7 +36,11 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
+          <Link 
+            to="/" 
+            className="flex items-center gap-2"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
             <img 
               src="/images/mascofriends-logo.png" 
               alt="Masco Friends" 
@@ -52,25 +56,28 @@ export default function Navbar() {
             {navItems.map((item, index) => (
               <div 
                 key={index}
-                className="relative"
+                className="relative group"
                 onMouseEnter={() => item.dropdown && setDropdownOpen(index)}
-                onMouseLeave={() => setDropdownOpen(null)}
+                onMouseLeave={() => item.dropdown && setDropdownOpen(null)}
               >
                 <a 
                   href={item.href}
-                  className="nav-link flex items-center gap-1"
+                  className="nav-link flex items-center gap-1 py-4"
                 >
                   {item.label}
                   {item.dropdown && <ChevronDown className="w-4 h-4" />}
                 </a>
                 
-                {item.dropdown && dropdownOpen === index && (
-                  <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 animate-fade-in">
+                {item.dropdown && (
+                  <div className={`absolute top-full left-0 mt-0 w-48 bg-white rounded-lg shadow-lg py-2 transition-all duration-200 ${
+                    dropdownOpen === index ? 'opacity-100 visible' : 'opacity-0 invisible'
+                  }`}>
                     {item.dropdown.map((subItem, subIndex) => (
                       <a
                         key={subIndex}
                         href={subItem.href}
                         className="block px-4 py-2 text-gray-600 hover:bg-vetivet-blue-light hover:text-vetivet-blue transition-colors"
+                        onClick={() => setDropdownOpen(null)}
                       >
                         {subItem.label}
                       </a>
