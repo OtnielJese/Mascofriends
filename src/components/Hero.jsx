@@ -1,11 +1,11 @@
-import { Calendar, ArrowRight, Stethoscope, Scissors, Monitor } from 'lucide-react'
+import { Calendar, ArrowRight, Zap, PawPrint, Cookie } from 'lucide-react'
 import WhatsAppButton from './WhatsAppButton'
 
 export default function Hero() {
   const quickServices = [
-    { icon: Stethoscope, label: 'Especialidades Veterinarias', color: 'text-blue-600' },
-    { icon: Scissors, label: 'Centro de Cirugía', color: 'text-green-600' },
-    { icon: Monitor, label: 'Centro de Imágenes', color: 'text-purple-600' },
+    { icon: Zap, label: 'Tipos de Cortes', color: 'text-green-600' },
+    { icon: PawPrint, label: 'Juguetes', color: 'text-purple-600' },
+    { icon: Cookie, label: 'Alimentos', color: 'text-orange-600' },
   ]
 
   return (
