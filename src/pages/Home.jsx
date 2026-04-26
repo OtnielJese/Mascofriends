@@ -8,10 +8,10 @@ import {
   Shield, 
   Award,
   ChevronRight,
-  Stethoscope,
   Scissors,
-  Syringe,
-  Monitor,
+  Gift,
+  Utensils,
+  Sparkles,
   Calendar,
   MessageCircle
 } from 'lucide-react'
@@ -22,28 +22,28 @@ import WhatsAppButton from '../components/WhatsAppButton'
 export default function Home() {
   const services = [
     {
-      icon: Stethoscope,
-      title: 'Especialidades Veterinarias',
-      description: 'Consultas especializadas con médicos veterinarios expertos en diferentes áreas.',
-      color: 'bg-blue-50 text-blue-600'
-    },
-    {
       icon: Scissors,
-      title: 'Centro de Cirugía',
-      description: 'Procedimientos quirúrgicos con equipos de última generación y personal capacitado.',
+      title: 'Tipos de Cortes',
+      description: 'Diversos estilos de cortes profesionales adaptados a la raza y preferencias de tu mascota.',
       color: 'bg-green-50 text-green-600'
     },
     {
-      icon: Monitor,
-      title: 'Centro de Imágenes',
-      description: 'Rayos X, ecografías y diagnóstico por imágenes de alta resolución.',
+      icon: Gift,
+      title: 'Juguetes',
+      description: 'Amplia selección de juguetes seguros y divertidos para mantener a tu perro feliz e entretenido.',
       color: 'bg-purple-50 text-purple-600'
     },
     {
-      icon: Syringe,
-      title: 'Vacunación',
-      description: 'Plan de vacunación completo para proteger la salud de tu mascota.',
+      icon: Utensils,
+      title: 'Alimentos',
+      description: 'Alimentos premium y nutrición balanceada para la salud óptima de tu mascota.',
       color: 'bg-orange-50 text-orange-600'
+    },
+    {
+      icon: Sparkles,
+      title: 'Baños y Spa',
+      description: 'Baños relajantes con productos de calidad para mantener a tu mascota limpia y saludable.',
+      color: 'bg-pink-50 text-pink-600'
     },
   ]
 
