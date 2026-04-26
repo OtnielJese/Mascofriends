@@ -21,11 +21,11 @@ export default function Navbar() {
       ]
     },
     { 
-      label: 'Clínica Veterinaria', 
-      href: '#clinica',
+      label: 'Tienda', 
+      href: '#tienda',
       dropdown: [
-        { label: 'Nuestro Equipo', href: '#equipo' },
-        { label: 'Instalaciones', href: '#instalaciones' },
+        { label: 'Juguetes', href: '#juguetes' },
+        { label: 'Accesorios', href: '#accesorios' },
       ]
     },
     { label: 'Blog', href: '#blog' },
@@ -47,7 +47,7 @@ export default function Navbar() {
               className="h-12 w-auto"
             />
             <span className="hidden sm:inline text-sm text-gray-500 border-l border-gray-300 pl-2">
-              Clínica Veterinaria<br />Especializada
+              Baños y cortes<br />para tu mascota
             </span>
           </Link>
 
