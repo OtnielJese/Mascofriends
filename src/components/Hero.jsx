@@ -1,11 +1,11 @@
-import { Calendar, ArrowRight, Scissors, Gift, Utensils } from 'lucide-react'
+import { Calendar, ArrowRight, Zap, PawPrint, Cookie } from 'lucide-react'
 import WhatsAppButton from './WhatsAppButton'
 
 export default function Hero() {
   const quickServices = [
-    { icon: Scissors, label: 'Tipos de Cortes', color: 'text-green-600' },
-    { icon: Gift, label: 'Juguetes', color: 'text-purple-600' },
-    { icon: Utensils, label: 'Alimentos', color: 'text-orange-600' },
+    { icon: Zap, label: 'Tipos de Cortes', color: 'text-green-600' },
+    { icon: PawPrint, label: 'Juguetes', color: 'text-purple-600' },
+    { icon: Cookie, label: 'Alimentos', color: 'text-orange-600' },
   ]
 
   return (

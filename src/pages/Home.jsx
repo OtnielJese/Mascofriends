@@ -8,10 +8,10 @@ import {
   Shield, 
   Award,
   ChevronRight,
-  Scissors,
-  Gift,
-  Utensils,
-  Sparkles,
+  Zap,
+  PawPrint,
+  Cookie,
+  Droplets,
   Calendar,
   MessageCircle
 } from 'lucide-react'
@@ -22,25 +22,25 @@ import WhatsAppButton from '../components/WhatsAppButton'
 export default function Home() {
   const services = [
     {
-      icon: Scissors,
+      icon: Zap,
       title: 'Tipos de Cortes',
       description: 'Diversos estilos de cortes profesionales adaptados a la raza y preferencias de tu mascota.',
       color: 'bg-green-50 text-green-600'
     },
     {
-      icon: Gift,
+      icon: PawPrint,
       title: 'Juguetes',
       description: 'Amplia selección de juguetes seguros y divertidos para mantener a tu perro feliz e entretenido.',
       color: 'bg-purple-50 text-purple-600'
     },
     {
-      icon: Utensils,
+      icon: Cookie,
       title: 'Alimentos',
       description: 'Alimentos premium y nutrición balanceada para la salud óptima de tu mascota.',
       color: 'bg-orange-50 text-orange-600'
     },
     {
-      icon: Sparkles,
+      icon: Droplets,
       title: 'Baños y Spa',
       description: 'Baños relajantes con productos de calidad para mantener a tu mascota limpia y saludable.',
       color: 'bg-pink-50 text-pink-600'
