@@ -49,7 +49,7 @@ export function AuthProvider({ children }) {
   }
 
   const isAdmin = () => {
-    return hasRole('ROLE_ADMIN') || hasRole('ROLE_SUPER_ADMIN')
+    return hasRole('ADMIN') || hasRole('SUPER_ADMIN') || hasRole('ROLE_ADMIN') || hasRole('ROLE_SUPER_ADMIN')
   }
 
   return (

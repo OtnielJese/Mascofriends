@@ -148,13 +148,6 @@ export default function AdminLayout() {
               >
                 <Menu className="w-6 h-6" />
               </button>
-              
-              {/* Breadcrumb */}
-              <div className="flex items-center gap-2 text-sm text-gray-500">
-                <Home className="w-4 h-4" />
-                <ChevronRight className="w-4 h-4" />
-                <span>Admin</span>
-              </div>
             </div>
 
             <NavLink 
