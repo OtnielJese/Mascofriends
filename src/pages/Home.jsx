@@ -128,7 +128,7 @@ export default function Home() {
                 type="bath"
                 className="btn bg-orange-500 text-white hover:bg-orange-600"
               >
-                <Scissors className="w-5 h-5" />
+                <Zap className="w-5 h-5" />
                 Agendar Baño
               </WhatsAppButton>
             </div>
