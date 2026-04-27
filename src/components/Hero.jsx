@@ -1,5 +1,6 @@
 import { Calendar, ArrowRight, Zap, PawPrint, Cookie } from 'lucide-react'
 import WhatsAppButton from './WhatsAppButton'
+import PawLogo from './PawLogo'
 
 export default function Hero() {
   const quickServices = [
@@ -18,12 +19,15 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="animate-slide-up flex flex-col items-center lg:items-start">
-            <div className="mb-8">
-              <img 
-                src="/images/mascofriends-logo.png" 
-                alt="Masco Friends - Pet Shop & Spa" 
-                className="h-72 md:h-80 w-auto"
-              />
+            {/* Modern Paw Logo + Brand Name */}
+            <div className="mb-12 flex flex-col items-center lg:items-start">
+              <div className="flex items-center gap-4 mb-2">
+                <PawLogo size={72} color="#FF4444" />
+                <div>
+                  <h1 className="text-4xl md:text-5xl font-display font-bold text-gray-800">Mascofriends</h1>
+                  <p className="text-md text-vetivet-red font-semibold">Grooming & Shop</p>
+                </div>
+              </div>
             </div>
             
             <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-lg text-center lg:text-left">

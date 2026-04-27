@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Menu, X, ChevronDown, Calendar, LogIn } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import WhatsAppButton from './WhatsAppButton'
+import PawLogo from './PawLogo'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -33,14 +34,16 @@ export default function Navbar() {
             className="flex items-center gap-2"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <img 
-              src="/images/mascofriends-logo.png" 
-              alt="Masco Friends" 
-              className="h-12 w-auto"
-            />
-            <div className="hidden sm:flex flex-col border-l border-gray-300 pl-2">
-              <span className="text-sm font-semibold text-gray-700 leading-tight">Baños y cortes</span>
-              <span className="text-xs text-gray-400 leading-tight">para tu mascota</span>
+            {/* Paw Logo */}
+            <div className="flex items-center gap-2">
+              <PawLogo size={32} color="#FF4444" />
+              <div className="hidden sm:block">
+                <div className="text-sm font-bold text-gray-800">Mascofriends</div>
+              </div>
+              <div className="hidden sm:flex flex-col border-l border-gray-300 pl-2">
+                <span className="text-sm font-semibold text-gray-700 leading-tight">Baños y cortes</span>
+                <span className="text-xs text-gray-400 leading-tight">para tu mascota</span>
+              </div>
             </div>
           </Link>
 
