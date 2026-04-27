@@ -349,7 +349,7 @@ export default function Home() {
           </div>
 
           <div className="border-t border-white/10 mt-8 pt-8 text-center text-gray-400">
-            <p>© {new Date().getFullYear()} Vetivet. Todos los derechos reservados.</p>
+            <p>© {new Date().getFullYear()} Mascofriends. Todos los derechos reservados.</p>
           </div>
         </div>
       </footer>

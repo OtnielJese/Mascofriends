@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Plus, Search, Pencil, Trash2, X, User, Phone, Mail, MapPin } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { OwnerService } from '../../services/dataService'
 
 export default function Owners() {
+  const navigate = useNavigate()
   const [owners, setOwners] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
   const [loading, setLoading] = useState(true)
@@ -79,6 +81,11 @@ export default function Owners() {
     setEditingOwner(null)
   }
 
+  const closeAndGoHome = () => {
+    closeModal()
+    navigate('/')
+  }
+
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
@@ -97,7 +104,9 @@ export default function Owners() {
       closeModal()
       loadOwners()
     } catch (error) {
-      toast.error(error.response?.data?.message || 'Error al guardar')
+      console.error('Error en handleSubmit:', error)
+      const errorMessage = error.response?.data?.message || error.message || 'Error al guardar'
+      toast.error(errorMessage)
     }
   }
 
@@ -313,7 +322,7 @@ export default function Owners() {
               </div>
 
               <div className="flex gap-3 pt-4">
-                <button type="button" onClick={closeModal} className="btn btn-secondary flex-1">
+                <button type="button" onClick={closeAndGoHome} className="btn btn-secondary flex-1">
                   Cancelar
                 </button>
                 <button type="submit" className="btn btn-primary flex-1">
