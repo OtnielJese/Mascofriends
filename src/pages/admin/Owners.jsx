@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { Plus, Search, Pencil, Trash2, X, User, Phone, Mail, MapPin } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { OwnerService } from '../../services/dataService'
 
 export default function Owners() {
-  const navigate = useNavigate()
   const [owners, setOwners] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
   const [loading, setLoading] = useState(true)
+  const [submitting, setSubmitting] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
   const [editingOwner, setEditingOwner] = useState(null)
   const [formData, setFormData] = useState({
@@ -81,11 +80,6 @@ export default function Owners() {
     setEditingOwner(null)
   }
 
-  const closeAndGoHome = () => {
-    closeModal()
-    navigate('/')
-  }
-
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
@@ -93,6 +87,7 @@ export default function Owners() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setSubmitting(true)
     try {
       if (editingOwner) {
         await OwnerService.update(editingOwner.id, formData)
@@ -104,9 +99,10 @@ export default function Owners() {
       closeModal()
       loadOwners()
     } catch (error) {
-      console.error('Error en handleSubmit:', error)
       const errorMessage = error.response?.data?.message || error.message || 'Error al guardar'
       toast.error(errorMessage)
+    } finally {
+      setSubmitting(false)
     }
   }
 
@@ -322,11 +318,11 @@ export default function Owners() {
               </div>
 
               <div className="flex gap-3 pt-4">
-                <button type="button" onClick={closeAndGoHome} className="btn btn-secondary flex-1">
+                <button type="button" onClick={closeModal} className="btn btn-secondary flex-1">
                   Cancelar
                 </button>
-                <button type="submit" className="btn btn-primary flex-1">
-                  {editingOwner ? 'Actualizar' : 'Crear'}
+                <button type="submit" disabled={submitting} className="btn btn-primary flex-1 disabled:opacity-60 disabled:cursor-not-allowed">
+                  {submitting ? 'Guardando...' : editingOwner ? 'Actualizar' : 'Crear'}
                 </button>
               </div>
             </form>
