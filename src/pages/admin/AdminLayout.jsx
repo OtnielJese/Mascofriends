@@ -159,9 +159,11 @@ export default function AdminLayout() {
 
             <NavLink 
               to="/"
-              className="text-vetivet-red hover:text-vetivet-red/80 text-sm font-medium"
+              className="p-2 text-vetivet-red hover:text-vetivet-red/80 hover:bg-red-50 rounded-lg transition-colors flex items-center gap-2"
+              title="Volver al Home"
             >
-              ← Volver al sitio
+              <Home className="w-5 h-5" />
+              <span className="hidden sm:inline text-sm font-medium">Inicio</span>
             </NavLink>
           </div>
         </header>
