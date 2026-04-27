@@ -121,7 +121,7 @@ export default function Dashboard() {
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-display font-bold text-gray-800">Dashboard</h1>
-        <p className="text-gray-600">Bienvenido al panel de administración de Vetivet</p>
+        <p className="text-gray-600">Bienvenido al panel de administración de Mascofriends</p>
       </div>
 
       {/* Stats Grid */}
