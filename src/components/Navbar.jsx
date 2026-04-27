@@ -12,21 +12,13 @@ export default function Navbar() {
 
   const navItems = [
     { label: 'Nosotros', href: '#nosotros' },
-    { 
-      label: 'Servicios', 
+    {
+      label: 'Catálogo',
       href: '#servicios',
       dropdown: [
-        { label: 'Especialidades', href: '#servicios' },
-        { label: 'Cirugía', href: '#servicios' },
-        { label: 'Imágenes', href: '#servicios' },
-      ]
-    },
-    { 
-      label: 'Tienda', 
-      href: '#tienda',
-      dropdown: [
-        { label: 'Juguetes', href: '#juguetes' },
-        { label: 'Accesorios', href: '#accesorios' },
+        { label: 'Tipos de cortes', href: '#servicios' },
+        { label: 'Juguetes', href: '#servicios' },
+        { label: 'Alimentos', href: '#servicios' },
       ]
     },
     { label: 'Blog', href: '#blog' },
@@ -47,11 +39,11 @@ export default function Navbar() {
               <PawLogo size={32} color="#FF4444" />
               <div className="hidden sm:block">
                 <div className="text-sm font-bold text-gray-800">Mascofriends</div>
-                <div className="text-xs text-gray-500">Baños y cortes</div>
               </div>
-              <span className="hidden sm:inline text-sm text-gray-500 border-l border-gray-300 pl-2">
-                para tu mascota
-              </span>
+              <div className="hidden sm:flex flex-col border-l border-gray-300 pl-2">
+                <span className="text-sm font-semibold text-gray-700 leading-tight">Baños y cortes</span>
+                <span className="text-xs text-gray-400 leading-tight">para tu mascota</span>
+              </div>
             </div>
           </Link>
 
