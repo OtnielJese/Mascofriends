@@ -215,25 +215,25 @@ export default function Appointments() {
     }
   }
 
-  const getStatusBadge = (status) => {
-    const styles = {
-      PENDING: 'bg-yellow-100 text-yellow-800',
-      CONFIRMED: 'bg-blue-100 text-blue-800',
-      COMPLETED: 'bg-green-100 text-green-800',
-      CANCELLED: 'bg-red-100 text-red-800'
-    }
-    const labels = {
-      PENDING: 'Pendiente',
-      CONFIRMED: 'Confirmada',
-      COMPLETED: 'Completada',
-      CANCELLED: 'Cancelada'
-    }
-    return (
-      <span className={`px-3 py-1 rounded-full text-xs font-medium ${styles[status]}`}>
-        {labels[status]}
-      </span>
-    )
+  const STATUS_LABELS = {
+    PENDING: 'Pendiente',
+    CONFIRMED: 'Confirmada',
+    COMPLETED: 'Completada',
+    CANCELLED: 'Cancelada'
   }
+
+  const STATUS_STYLES = {
+    PENDING: 'bg-yellow-100 text-yellow-800',
+    CONFIRMED: 'bg-blue-100 text-blue-800',
+    COMPLETED: 'bg-green-100 text-green-800',
+    CANCELLED: 'bg-red-100 text-red-800'
+  }
+
+  const getStatusBadge = (status) => (
+    <span className={`px-3 py-1 rounded-full text-xs font-medium ${STATUS_STYLES[status]}`}>
+      {STATUS_LABELS[status]}
+    </span>
+  )
 
   const getTypeLabel = (type) => {
     const labels = {
@@ -280,7 +280,7 @@ export default function Appointments() {
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
             >
-              {status === 'ALL' ? 'Todas' : getStatusBadge(status).props.children}
+              {status === 'ALL' ? 'Todas' : STATUS_LABELS[status]}
             </button>
           ))}
         </div>
@@ -587,13 +587,14 @@ export default function Appointments() {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Email
+                  Email *
                 </label>
                 <input
                   type="email"
                   value={quickOwnerData.email}
                   onChange={(e) => setQuickOwnerData({...quickOwnerData, email: e.target.value})}
                   className="input"
+                  required
                 />
               </div>
 
